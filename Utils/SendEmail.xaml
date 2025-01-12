@@ -104,7 +104,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="1545.3333333333333,1070.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="1545.3333333333333,1102" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -122,19 +122,19 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <umab:GmailApplicationCard ClientId="{x:Null}" ClientSecret="{x:Null}" Account="Please select an account" ConnectionAccountName="dayanalissrodriguez@gmail.com #2" ConnectionId="4d5fc60f-1b65-46ee-8047-f63e1598dc05" DisplayName="Use Gmail - Conexión correo" sap:VirtualizedContainerService.HintSize="502,704" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_1" Timeout="90" UseConnectionService="True">
+    <umab:GmailApplicationCard ClientId="{x:Null}" ClientSecret="{x:Null}" Account="Please select an account" ConnectionAccountName="dayanalissrodriguez@gmail.com #2" ConnectionId="4d5fc60f-1b65-46ee-8047-f63e1598dc05" DisplayName="Use Gmail - Conexión correo" sap:VirtualizedContainerService.HintSize="502,735.3333333333334" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_1" Timeout="90" UseConnectionService="True">
       <umab:GmailApplicationCard.Body>
         <ActivityAction x:TypeArguments="um:IMailQuickHandle">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,484" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,515.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <umab:SendMailX Bcc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" DisplayName="Send Email - Correo genérico" sap:VirtualizedContainerService.HintSize="434,424" sap2010:WorkflowViewState.IdRef="SendMailX_2" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" UseDocumentAsBody="False">
+            <umab:SendMailX Bcc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" DisplayName="Send Email - Correo genérico" sap:VirtualizedContainerService.HintSize="434,455.3333333333333" sap2010:WorkflowViewState.IdRef="SendMailX_2" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" UseDocumentAsBody="False">
               <umab:SendMailX.Account>
                 <InArgument x:TypeArguments="um:IMailQuickHandle">
                   <CSharpValue x:TypeArguments="um:IMailQuickHandle" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">Gmail</CSharpValue>
@@ -151,7 +151,11 @@
                 </InArgument>
               </umab:SendMailX.Cc>
               <umab:SendMailX.Files>
-                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
+                  <InArgument x:TypeArguments="x:String">
+                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">in_EmailAttachments</CSharpValue>
+                  </InArgument>
+                </scg:List>
               </umab:SendMailX.Files>
               <umab:SendMailX.HtmlBodyFromFile>
                 <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">

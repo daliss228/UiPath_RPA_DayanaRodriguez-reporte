@@ -101,7 +101,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[UiPath_RPA_DayanaRodriguez-reporte]&#xA;[Reporte citas AMT]&#xA;[Dayana Rodriguez]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1562.6666666666665,949.3733333333332" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[UiPath_RPA_DayanaRodriguez-reporte]&#xA;[Reporte citas AMT]&#xA;[Dayana Rodriguez]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1562.6666666666667,734.6666666666666" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -362,7 +362,7 @@
                     <CSharpValue x:TypeArguments="x:Boolean" DisplayName="C sharp value" sap2010:WorkflowViewState.IdRef="CSharpValue`1_94">SystemException == null &amp;&amp; BusinessException == null</CSharpValue>
                   </Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="The core of the process is performed." DisplayName="Core Process" sap:VirtualizedContainerService.HintSize="210,106" sap2010:WorkflowViewState.IdRef="State_1">
+                    <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="The core of the process is performed." DisplayName="Core Process" sap:VirtualizedContainerService.HintSize="516.6666666666666,1236.6666666666667" sap2010:WorkflowViewState.IdRef="State_1">
                       <State.Entry>
                         <TryCatch DisplayName="Try to Core Process" sap:VirtualizedContainerService.HintSize="470,835.3333333333334" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                           <TryCatch.Try>
@@ -377,9 +377,9 @@
                                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                                     <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_150">Config</CSharpValue>
                                   </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReporteFilePath">
-                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_158">strReporteFilePath</CSharpValue>
-                                  </InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_ReporteFilePath">
+                                    <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_47">strReporteFilePath</CSharpReference>
+                                  </OutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
@@ -481,7 +481,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="597.3333333333334,2237.3333333333335" sap2010:WorkflowViewState.IdRef="State_2" IsFinal="True">
+                            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="154,122.66666666666667" sap2010:WorkflowViewState.IdRef="State_2" IsFinal="True">
                               <State.Entry>
                                 <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="550.6666666666666,2090" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                                   <TryCatch.Try>
@@ -619,7 +619,7 @@
                                                     </ui:AssignOperation.To>
                                                     <ui:AssignOperation.Value>
                                                       <InArgument x:TypeArguments="x:String">
-                                                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_160">strReporteFilePath</CSharpValue>
+                                                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_161">File.Exists(strReporteFilePath) ? strReporteFilePath : ""</CSharpValue>
                                                       </InArgument>
                                                     </ui:AssignOperation.Value>
                                                   </ui:AssignOperation>
@@ -804,7 +804,6 @@
       <Variable x:TypeArguments="s:Exception" sap2010:Annotation.AnnotationText="Used during transitions between states to represent exceptions other than business exceptions." Name="SystemException" />
       <Variable x:TypeArguments="ui:BusinessRuleException" sap2010:Annotation.AnnotationText="Used during transitions between states and represents a situation that does not conform to the rules of the process being automated." Name="BusinessException" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="Config" />
-      <Variable x:TypeArguments="x:Int32" Name="numRegistros" />
       <Variable x:TypeArguments="x:String" Name="strReporteFilePath" />
     </StateMachine.Variables>
   </StateMachine>
