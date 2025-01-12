@@ -353,7 +353,7 @@
                 <Transition DisplayName="Successful " sap2010:WorkflowViewState.IdRef="Transition_14">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:PointCollection x:Key="ConnectorLocation">739,124.66666666666667 739,255.99999999999997</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">739,124.66666666666667 739,154.66666666666669 740,154.66666666666669 740,267</av:PointCollection>
                       <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
                       <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
                     </scg:Dictionary>
@@ -376,12 +376,6 @@
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                                     <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_150">Config</CSharpValue>
-                                  </InArgument>
-                                  <OutArgument x:TypeArguments="x:Int32" x:Key="out_numRegistros">
-                                    <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_46">numRegistros</CSharpReference>
-                                  </OutArgument>
-                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_ObtenerCantidadRegistrosBDD">
-                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_152">in_ObtenerCantidadRegistrosBDD</CSharpValue>
                                   </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
@@ -466,7 +460,7 @@
                       </State.Entry>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">634,255.99999999999997</av:Point>
+                          <av:Point x:Key="ShapeLocation">635,267</av:Point>
                           <av:Size x:Key="ShapeSize">210,106</av:Size>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -478,7 +472,7 @@
                         <Transition DisplayName="Finish" sap2010:WorkflowViewState.IdRef="Transition_13">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:PointCollection x:Key="ConnectorLocation">634,319.59999999999997 604,319.59999999999997 604,329.6 426,329.6</av:PointCollection>
+                              <av:PointCollection x:Key="ConnectorLocation">635,330.6 605,330.6 605,329.6 426,329.6</av:PointCollection>
                               <x:Int32 x:Key="SrcConnectionPointIndex">45</x:Int32>
                               <x:Int32 x:Key="DestConnectionPointIndex">44</x:Int32>
                             </scg:Dictionary>
