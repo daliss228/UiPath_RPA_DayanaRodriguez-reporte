@@ -1,0 +1,1500 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SendEmail" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_EmailAddressReceiverTo" Type="InArgument(x:String)" />
+    <x:Property Name="in_EmailAddressReceiverCC" Type="InArgument(x:String)" />
+    <x:Property Name="in_EmailSubject" Type="InArgument(x:String)" />
+    <x:Property Name="in_EmailAttachments" Type="InArgument(x:String)" />
+    <x:Property Name="in_EmailBodyMessage" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1882.6666666666667,1177.3333333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>Microsoft.Exchange.WebServices.Data</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Mail.Activities.Utils</x:String>
+      <x:String>UiPath.Mail.Exchange</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.MetadataLoadContext</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SendEmail" sap:VirtualizedContainerService.HintSize="1794.6666666666667,22670.666666666668" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message - Inicio envio correo" sap:VirtualizedContainerService.HintSize="554.6666666666666,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1">
+      <ui:LogMessage.Level>
+        <InArgument x:TypeArguments="ui:LogLevel">
+          <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">UiPath.Core.Activities.LogLevel.Info</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Level>
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"Enviando email..."</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <umab:GmailApplicationCard ClientId="{x:Null}" ClientSecret="{x:Null}" Account="Please select an account" ConnectionAccountName="dayanalissrodriguez@gmail.com #2" ConnectionId="4d5fc60f-1b65-46ee-8047-f63e1598dc05" DisplayName="Use Gmail" sap:VirtualizedContainerService.HintSize="554.6666666666666,21784.666666666668" sap2010:WorkflowViewState.IdRef="GmailApplicationCard_1" Timeout="90" UseConnectionService="True">
+      <umab:GmailApplicationCard.Body>
+        <ActivityAction x:TypeArguments="um:IMailQuickHandle">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Gmail" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,21564.666666666668" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <umab:SendMailX Bcc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" DisplayName="Send Email - Correo genérico" sap:VirtualizedContainerService.HintSize="434,21504.666666666668" sap2010:WorkflowViewState.IdRef="SendMailX_2" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" UseDocumentAsBody="False">
+              <umab:SendMailX.Account>
+                <InArgument x:TypeArguments="um:IMailQuickHandle">
+                  <CSharpValue x:TypeArguments="um:IMailQuickHandle" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">Gmail</CSharpValue>
+                </InArgument>
+              </umab:SendMailX.Account>
+              <umab:SendMailX.Body>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25" xml:space="preserve">@"&lt;!DOCTYPE html
+   PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 
+   'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'&gt;
+&lt;html xmlns='http://www.w3.org/1999/xhtml'&gt;
+   &lt;head&gt;
+      &lt;meta http-equiv='Content-Type' content='text/html; charset=UTF-8' 
+         /&gt;
+      &lt;meta http-equiv='X-UA-Compatible' content='ie=edge' /&gt;
+      &lt;meta name='viewport' content='width=device-width, 
+         initial-scale=1'&gt;
+      &lt;style type='text/css'&gt;
+         /*Actions*/
+         .btnPrimary:hover {
+         background-color: #ffcc00 !important;
+         }
+         .btnSecondary:hover {
+         background-color: #b5b9c4 !important;
+         }
+         .btnTertiary:hover {
+         background-color: #e9ecf3 !important;
+         border: 1px solid #0f265c !important;
+         }
+         .btnComplementary:hover {
+         background-color: #0c1f50 !important;
+         }
+         .btnCMB:hover {
+         background-color: #ffffff !important;
+         color: #0f265c !important;
+         border: solid 1px #0f265c !important;
+         }
+         /* hacks */
+         * {
+         -webkit-text-size-adjust: none;
+         -ms-text-size-adjust: none;
+         max-height: 1000000px;
+         }
+         #outlook a {
+         padding: 0;
+         }
+         .ReadMsgBody {
+         width: 100%;
+         }
+         .ExternalClass {
+         width: 100%;
+         }
+         .ExternalClass * {
+         line-height: 100%;
+         }
+         .ios_rstLinks a {
+         color: inherit !important;
+         text-decoration: none !important;
+         }
+      &lt;/style&gt;
+      &lt;style type='text/css'&gt;
+         @media only screen and (max-width: 599px) {
+         .hideme-xs {
+         display: none !important;
+         }
+         .showme-xs {
+         display: block !important;
+         }
+         }
+      &lt;/style&gt;
+      &lt;style type='text/css'&gt;
+         @media only screen and (max-width: 599px) {
+         /*XS*/
+         /* global styles */
+         .Tshowme-xs {
+         display: table !important;
+         }
+         .blockwrap-xs {
+         display: block !important;
+         }
+         .movedown-xs {
+         display: table-footer-group !important;
+         }
+         .moveup-xs {
+         display: table-header-group !important;
+         }
+         .txt-xs-left {
+         text-align: left !important;
+         }
+         .txt-xs-center {
+         text-align: center !important;
+         }
+         .txt-xs-right {
+         text-align: right !important;
+         }
+         .m-xs-auto {
+         margin: 0 auto !important;
+         }
+         .container-xs {
+         width: 100% !important;
+         }
+         .float-xs-unset {
+         float: unset !important;
+         }
+         .bradius-xs-0 {
+         border-radius: unset !important
+         }
+         .overflow-xs-hidden {
+         overflow: hidden !important;
+         }
+         /* font styles */
+         .font-xs-C8,
+         .font-xs-8 {
+         font-size: 8px !important;
+         line-height: 10px !important;
+         }
+         .font-xs-C10,
+         .font-xs-10 {
+         font-size: 10px !important;
+         line-height: 12px !important;
+         }
+         .font-xs-C12,
+         .font-xs-12 {
+         font-size: 12px !important;
+         line-height: 14px !important;
+         }
+         .font-xs-C14,
+         .font-xs-14 {
+         font-size: 14px !important;
+         line-height: 17px !important;
+         }
+         .font-xs-C16,
+         .font-xs-16 {
+         font-size: 16px !important;
+         line-height: 19px !important;
+         }
+         .font-xs-C18,
+         .font-xs-18 {
+         font-size: 18px !important;
+         line-height: 22px !important;
+         }
+         .font-xs-C20,
+         .font-xs-20 {
+         font-size: 20px !important;
+         line-height: 24px !important;
+         }
+         .font-xs-C24,
+         .font-xs-22 {
+         font-size: 22px !important;
+         line-height: 26px !important;
+         }
+         .font-xs-C28,
+         .font-xs-24 {
+         font-size: 24px !important;
+         line-height: 29px !important;
+         }
+         .font-xs-C32,
+         .font-xs-28 {
+         font-size: 28px !important;
+         line-height: 34px !important;
+         }
+         .font-xs-C40,
+         .font-xs-32 {
+         font-size: 32px !important;
+         line-height: 38px !important;
+         }
+         /*Paddings*/
+         /*Resets*/
+         .p-xs-0 {
+         padding-top: 0px !important;
+         padding-right: 0px !important;
+         padding-bottom: 0px !important;
+         padding-left: 0px !important;
+         }
+         .px-xs-0 {
+         padding-right: 0px !important;
+         padding-left: 0px !important;
+         }
+         .py-xs-0 {
+         padding-top: 0px !important;
+         padding-bottom: 0px !important;
+         }
+         .pt-xs-0 {
+         padding-top: 0px !important;
+         }
+         .pr-xs-0 {
+         padding-right: 0px !important;
+         }
+         .pb-xs-0 {
+         padding-bottom: 0px !important;
+         }
+         .pl-xs-0 {
+         padding-left: 0px !important;
+         }
+         /*Padding Spacings*/
+         .pt-xs-4 {
+         padding-top: 4px !important;
+         }
+         .pt-xs-8 {
+         padding-top: 8px !important;
+         }
+         .pt-xs-12 {
+         padding-top: 12px !important;
+         }
+         .pt-xs-16 {
+         padding-top: 16px !important;
+         }
+         .pt-xs-20 {
+         padding-top: 20px !important;
+         }
+         .pt-xs-24 {
+         padding-top: 24px !important;
+         }
+         .pt-xs-32 {
+         padding-top: 32px !important;
+         }
+         .pt-xs-40 {
+         padding-top: 40px !important;
+         }
+         .pt-xs-48 {
+         padding-top: 48px !important;
+         }
+         .pt-xs-56 {
+         padding-top: 56px !important;
+         }
+         .pt-xs-64 {
+         padding-top: 64px !important;
+         }
+         .pt-xs-72 {
+         padding-top: 72px !important;
+         }
+         .pt-xs-80 {
+         padding-top: 80px !important;
+         }
+         .pt-xs-88 {
+         padding-top: 88px !important;
+         }
+         .pt-xs-96 {
+         padding-top: 96px !important;
+         }
+         .pt-xs-104 {
+         padding-top: 104px !important;
+         }
+         .pt-xs-112 {
+         padding-top: 112px !important;
+         }
+         .pt-xs-120 {
+         padding-top: 120px !important;
+         }
+         /*Padding Right*/
+         .pr-xs-4 {
+         padding-right: 4px !important;
+         }
+         .pr-xs-8 {
+         padding-right: 8px !important;
+         }
+         .pr-xs-12 {
+         padding-right: 12px !important;
+         }
+         .pr-xs-16 {
+         padding-right: 16px !important;
+         }
+         .pr-xs-20 {
+         padding-right: 20px !important;
+         }
+         .pr-xs-24 {
+         padding-right: 24px !important;
+         }
+         .pr-xs-32 {
+         padding-right: 32px !important;
+         }
+         .pr-xs-40 {
+         padding-right: 40px !important;
+         }
+         .pr-xs-48 {
+         padding-right: 48px !important;
+         }
+         .pr-xs-56 {
+         padding-right: 56px !important;
+         }
+         .pr-xs-64 {
+         padding-right: 64px !important;
+         }
+         .pr-xs-72 {
+         padding-right: 72px !important;
+         }
+         .pr-xs-80 {
+         padding-right: 80px !important;
+         }
+         /*Padding Bottom*/
+         .pb-xs-4 {
+         padding-bottom: 4px !important;
+         }
+         .pb-xs-8 {
+         padding-bottom: 8px !important;
+         }
+         .pb-xs-12 {
+         padding-bottom: 12px !important;
+         }
+         .pb-xs-16 {
+         padding-bottom: 16px !important;
+         }
+         .pb-xs-20 {
+         padding-bottom: 20px !important;
+         }
+         .pb-xs-24 {
+         padding-bottom: 24px !important;
+         }
+         .pb-xs-32 {
+         padding-bottom: 32px !important;
+         }
+         .pb-xs-40 {
+         padding-bottom: 40px !important;
+         }
+         .pb-xs-48 {
+         padding-bottom: 48px !important;
+         }
+         .pb-xs-56 {
+         padding-bottom: 56px !important;
+         }
+         .pb-xs-64 {
+         padding-bottom: 64px !important;
+         }
+         .pb-xs-72 {
+         padding-bottom: 72px !important;
+         }
+         .pb-xs-80 {
+         padding-bottom: 80px !important;
+         }
+         .pb-xs-88 {
+         padding-bottom: 88px !important;
+         }
+         .pb-xs-96 {
+         padding-bottom: 96px !important;
+         }
+         .pb-xs-104 {
+         padding-bottom: 104px !important;
+         }
+         .pb-xs-112 {
+         padding-bottom: 112px !important;
+         }
+         .pb-xs-120 {
+         padding-bottom: 120px !important;
+         }
+         /*Padding Left*/
+         .pl-xs-4 {
+         padding-left: 4px !important;
+         }
+         .pl-xs-8 {
+         padding-left: 8px !important;
+         }
+         .pl-xs-12 {
+         padding-left: 12px !important;
+         }
+         .pl-xs-16 {
+         padding-left: 16px !important;
+         }
+         .pl-xs-20 {
+         padding-left: 20px !important;
+         }
+         .pl-xs-24 {
+         padding-left: 24px !important;
+         }
+         .pl-xs-32 {
+         padding-left: 32px !important;
+         }
+         .pl-xs-40 {
+         padding-left: 40px !important;
+         }
+         .pl-xs-48 {
+         padding-left: 48px !important;
+         }
+         .pl-xs-56 {
+         padding-left: 56px !important;
+         }
+         .pl-xs-64 {
+         padding-left: 64px !important;
+         }
+         .pl-xs-72 {
+         padding-left: 72px !important;
+         }
+         .pl-xs-80 {
+         padding-left: 80px !important;
+         }
+         /*padding Y*/
+         .py-xs-20 {
+         padding-top: 20px !important;
+         padding-bottom: 20px !important;
+         }
+         .py-xs-24 {
+         padding-top: 24px !important;
+         padding-bottom: 24px !important;
+         }
+         .py-xs-32 {
+         padding-top: 32px !important;
+         padding-bottom: 32px !important;
+         }
+         .py-xs-40 {
+         padding-top: 40px !important;
+         padding-bottom: 40px !important;
+         }
+         /*padding X*/
+         .px-xs-4 {
+         padding-right: 4px !important;
+         padding-left: 4px !important;
+         }
+         .px-xs-8 {
+         padding-right: 8px !important;
+         padding-left: 8px !important;
+         }
+         .px-xs-12 {
+         padding-right: 12px !important;
+         padding-left: 12px !important;
+         }
+         .px-xs-16 {
+         padding-right: 16px !important;
+         padding-left: 16px !important;
+         }
+         .px-xs-20 {
+         padding-right: 20px !important;
+         padding-left: 20px !important;
+         }
+         .px-xs-24 {
+         padding-right: 24px !important;
+         padding-left: 24px !important;
+         }
+         .px-xs-32 {
+         padding-right: 32px !important;
+         padding-left: 32px !important;
+         }
+         .px-xs-40 {
+         padding-right: 40px !important;
+         padding-left: 40px !important;
+         }
+         .px-xs-48 {
+         padding-right: 48px !important;
+         padding-left: 48px !important;
+         }
+         .px-xs-56 {
+         padding-right: 56px !important;
+         padding-left: 56px !important;
+         }
+         .px-xs-64 {
+         padding-right: 64px !important;
+         padding-left: 64px !important;
+         }
+         .px-xs-72 {
+         padding-right: 72px !important;
+         padding-left: 72px !important;
+         }
+         .px-xs-80 {
+         padding-right: 80px !important;
+         padding-left: 80px !important;
+         }
+         /*Grid*/
+         .col-xs-12 {
+         float: unset !important;
+         width: 100% !important
+         }
+         .col-xs-11 {
+         float: left !important;
+         width: 92% !important
+         }
+         .col-xs-10 {
+         float: left !important;
+         width: 83% !important
+         }
+         .col-xs-9 {
+         float: left !important;
+         width: 75% !important
+         }
+         .col-xs-8 {
+         float: left !important;
+         width: 67% !important
+         }
+         .col-xs-7 {
+         float: left !important;
+         width: 58% !important
+         }
+         .col-xs-6 {
+         float: left !important;
+         width: 50% !important
+         }
+         .col-xs-5 {
+         float: left !important;
+         width: 42% !important
+         }
+         .col-xs-4 {
+         float: left !important;
+         width: 33% !important
+         }
+         .col-xs-3 {
+         float: left !important;
+         width: 25% !important
+         }
+         .col-xs-2 {
+         float: left !important;
+         width: 17% !important
+         }
+         .col-xs-1 {
+         float: left !important;
+         width: 8% !important
+         }
+         /*Heights*/
+         .h-xs-4 {
+         height: 4px !important;
+         }
+         .h-xs-8 {
+         height: 8px !important;
+         }
+         .h-xs-12 {
+         height: 12px !important;
+         }
+         .h-xs-16 {
+         height: 16px !important;
+         }
+         .h-xs-20 {
+         height: 20px !important;
+         }
+         .h-xs-24 {
+         height: 24px !important;
+         }
+         .h-xs-32 {
+         height: 32px !important;
+         }
+         .h-xs-36 {
+         height: 36px !important;
+         }
+         .h-xs-40 {
+         height: 40px !important;
+         }
+         .h-xs-48 {
+         height: 48px !important;
+         }
+         .h-xs-56 {
+         height: 56px !important;
+         }
+         /*Widths*/
+         .w-xs-100pct {
+         width: 100% !important;
+         }
+         .w-xs-4 {
+         width: 4px !important;
+         }
+         .w-xs-8 {
+         width: 8px !important;
+         }
+         .w-xs-12 {
+         width: 12px !important;
+         }
+         .w-xs-16 {
+         width: 16px !important;
+         }
+         .w-xs-20 {
+         width: 20px !important;
+         }
+         .w-xs-24 {
+         width: 24px !important;
+         }
+         .w-xs-32 {
+         width: 32px !important;
+         }
+         .w-xs-40 {
+         width: 40px !important;
+         }
+         .w-xs-48 {
+         width: 48px !important;
+         }
+         .w-xs-56 {
+         width: 56px !important;
+         }
+         .w-xs-64 {
+         width: 64px !important;
+         }
+         .w-xs-72 {
+         width: 72px !important;
+         }
+         .w-xs-80 {
+         width: 80px !important;
+         }
+         .w-xs-88 {
+         width: 88px !important;
+         }
+         .w-xs-96 {
+         width: 96px !important;
+         }
+         .w-xs-104 {
+         width: 104px !important;
+         }
+         .w-xs-112 {
+         width: 112px !important;
+         }
+         .w-xs-120 {
+         width: 120px !important;
+         }
+         .w-xs-160 {
+         width: 160px !important;
+         }
+         .w-xs-167 {
+         width: 167px !important;
+         }
+         .w-xs-240 {
+         width: 240px !important;
+         }
+         /*MaxWidth*/
+         .mw-xs-120 {
+         max-width: 120px !important;
+         }
+         .mw-xs-160 {
+         max-width: 160px !important;
+         }
+         .mw-xs-168 {
+         max-width: 168px !important;
+         }
+         .mw-xs-180 {
+         max-width: 180px !important;
+         }
+         .mw-xs-200 {
+         max-width: 200px !important;
+         }
+         .mw-xs-220 {
+         max-width: 220px !important;
+         }
+         .mw-xs-240 {
+         max-width: 240px !important;
+         }
+         .mw-xs-280 {
+         max-width: 280px !important;
+         }
+         .mw-xs-300 {
+         max-width: 300px !important;
+         }
+         .mw-xs-320 {
+         max-width: 320px !important;
+         }
+         }
+      &lt;/style&gt;
+      &lt;style type='text/css'&gt;
+         @media only screen and (max-width: 479px) {
+         .hideme-xxs {
+         display: none !important;
+         }
+         .showme-xxs {
+         display: block !important;
+         }
+         }
+      &lt;/style&gt;
+      &lt;style type='text/css'&gt;
+         @media only screen and (max-width: 479px) {
+         /*XXS*/
+         /* global styles */
+         .Tshowme-xxs {
+         display: table !important;
+         }
+         .movedown-xxs {
+         display: table-footer-group !important;
+         }
+         .moveup-xxs {
+         display: table-header-group !important;
+         }
+         .txt-xxs-left {
+         text-align: left !important;
+         }
+         .txt-xxs-center {
+         text-align: center !important;
+         }
+         .txt-xxs-right {
+         text-align: right !important;
+         }
+         .m-xxs-auto {
+         margin: 0 auto !important;
+         }
+         .container-xxs {
+         width: 100% !important;
+         }
+         .float-xxs-unset {
+         float: unset !important;
+         }
+         .bradius-xxs-0 {
+         border-radius: unset !important
+         }
+         .overflow-xxs-hidden {
+         overflow: hidden !important;
+         }
+         .bground-xxs-footer {
+         background-image: 
+         url('https://bancopichincha-prod.pichincha.com/tcp/public/images/Email/background-MOBILE.png');
+         }
+         /*padding XXS: Resets*/
+         .p-xxs-0 {
+         padding-top: 0px !important;
+         padding-right: 0px !important;
+         padding-bottom: 0px !important;
+         padding-left: 0px !important;
+         }
+         .px-xxs-0 {
+         padding-right: 0px !important;
+         padding-left: 0px !important;
+         }
+         .py-xxs-0 {
+         padding-top: 0px !important;
+         padding-bottom: 0px !important;
+         }
+         .pt-xxs-0 {
+         padding-top: 0px !important;
+         }
+         .pr-xxs-0 {
+         padding-right: 0px !important;
+         }
+         .pb-xxs-0 {
+         padding-bottom: 0px !important;
+         }
+         .pl-xxs-0 {
+         padding-left: 0px !important;
+         }
+         /*Padding Right*/
+         .pr-xxs-4 {
+         padding-right: 4px !important;
+         }
+         .pr-xxs-8 {
+         padding-right: 8px !important;
+         }
+         .pr-xxs-12 {
+         padding-right: 12px !important;
+         }
+         .pr-xxs-16 {
+         padding-right: 16px !important;
+         }
+         .pr-xxs-20 {
+         padding-right: 20px !important;
+         }
+         .pr-xxs-24 {
+         padding-right: 24px !important;
+         }
+         .pr-xxs-32 {
+         padding-right: 32px !important;
+         }
+         .pr-xxs-40 {
+         padding-right: 40px !important;
+         }
+         .pr-xxs-48 {
+         padding-right: 48px !important;
+         }
+         .pr-xxs-56 {
+         padding-right: 56px !important;
+         }
+         .pr-xxs-64 {
+         padding-right: 64px !important;
+         }
+         .pr-xxs-72 {
+         padding-right: 72px !important;
+         }
+         .pr-xxs-80 {
+         padding-right: 80px !important;
+         }
+         /*Padding Left*/
+         .pl-xxs-4 {
+         padding-left: 4px !important;
+         }
+         .pl-xxs-8 {
+         padding-left: 8px !important;
+         }
+         .pl-xxs-12 {
+         padding-left: 12px !important;
+         }
+         .pl-xxs-16 {
+         padding-left: 16px !important;
+         }
+         .pl-xxs-20 {
+         padding-left: 20px !important;
+         }
+         .pl-xxs-24 {
+         padding-left: 24px !important;
+         }
+         .pl-xxs-32 {
+         padding-left: 32px !important;
+         }
+         .pl-xxs-40 {
+         padding-left: 40px !important;
+         }
+         .pl-xxs-48 {
+         padding-left: 48px !important;
+         }
+         .pl-xxs-56 {
+         padding-left: 56px !important;
+         }
+         .pl-xxs-64 {
+         padding-left: 64px !important;
+         }
+         .pl-xxs-72 {
+         padding-left: 72px !important;
+         }
+         .pl-xxs-80 {
+         padding-left: 80px !important;
+         }
+         /*padding Y*/
+         .py-xxs-20 {
+         padding-top: 20px !important;
+         padding-bottom: 20px !important;
+         }
+         .py-xxs-24 {
+         padding-top: 24px !important;
+         padding-bottom: 24px !important;
+         }
+         .py-xxs-32 {
+         padding-top: 32px !important;
+         padding-bottom: 32px !important;
+         }
+         .py-xxs-40 {
+         padding-top: 40px !important;
+         padding-bottom: 40px !important;
+         }
+         /*padding X*/
+         .px-xxs-4 {
+         padding-right: 4px !important;
+         padding-left: 4px !important;
+         }
+         .px-xxs-8 {
+         padding-right: 8px !important;
+         padding-left: 8px !important;
+         }
+         .px-xxs-12 {
+         padding-right: 12px !important;
+         padding-left: 12px !important;
+         }
+         .px-xxs-16 {
+         padding-right: 16px !important;
+         padding-left: 16px !important;
+         }
+         .px-xxs-20 {
+         padding-right: 20px !important;
+         padding-left: 20px !important;
+         }
+         .px-xxs-24 {
+         padding-right: 24px !important;
+         padding-left: 24px !important;
+         }
+         .px-xxs-32 {
+         padding-right: 32px !important;
+         padding-left: 32px !important;
+         }
+         .px-xxs-40 {
+         padding-right: 40px !important;
+         padding-left: 40px !important;
+         }
+         .px-xxs-48 {
+         padding-right: 48px !important;
+         padding-left: 48px !important;
+         }
+         .px-xxs-56 {
+         padding-right: 56px !important;
+         padding-left: 56px !important;
+         }
+         .px-xxs-64 {
+         padding-right: 64px !important;
+         padding-left: 64px !important;
+         }
+         .px-xxs-72 {
+         padding-right: 72px !important;
+         padding-left: 72px !important;
+         }
+         .px-xxs-80 {
+         padding-right: 80px !important;
+         padding-left: 80px !important;
+         }
+         /*Grid*/
+         .col-xxs-12 {
+         float: unset !important;
+         width: 100% !important
+         }
+         .col-xxs-11 {
+         float: left !important;
+         width: 92% !important
+         }
+         .col-xxs-10 {
+         float: left !important;
+         width: 83% !important
+         }
+         .col-xxs-9 {
+         float: left !important;
+         width: 75% !important
+         }
+         .col-xxs-8 {
+         float: left !important;
+         width: 67% !important
+         }
+         .col-xxs-7 {
+         float: left !important;
+         width: 58% !important
+         }
+         .col-xxs-6 {
+         float: left !important;
+         width: 50% !important
+         }
+         .col-xxs-5 {
+         float: left !important;
+         width: 42% !important
+         }
+         .col-xxs-4 {
+         float: left !important;
+         width: 33% !important
+         }
+         .col-xxs-3 {
+         float: left !important;
+         width: 25% !important
+         }
+         .col-xxs-2 {
+         float: left !important;
+         width: 17% !important
+         }
+         .col-xxs-1 {
+         float: left !important;
+         width: 8% !important
+         }
+         /*Widths*/
+         .w-xxs-100pct {
+         width: 100% !important;
+         }
+         }
+      &lt;/style&gt;
+      &lt;!--[if (gte mso 9)|(IE)]&gt;
+      &lt;style type='text/css'&gt;
+         table {border-collapse: collapse !important;}
+      &lt;/style&gt;
+      &lt;![endif]--&gt;
+   &lt;/head&gt;
+   &lt;body bgcolor='#f3f4f7'
+      style='-webkit-text-size-adjust:none;background-color : 
+      #f3f4f7;font-family : Arial, helvetica, sans-serif;margin:0;padding: 
+      0px;'
+      topmargin='0' leftmargin='0' marginheight='0' marginwidth='0'&gt;
+      &lt;table bgcolor='#f3f4f7' width='100%' border='0' cellpadding='0' 
+         cellspacing='0' align='center'
+         style='background-color : #f3f4f7;border-spacing: 0;width: 
+         100%;'&gt;
+         &lt;tr&gt;
+            &lt;td align='center' 
+               style='padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;'&gt;
+               &lt;table cellspacing='0' cellpadding='0' border='0' width='600'
+                  class='container-xs' align='center'
+                  style='border-spacing: 0;'&gt;
+                  &lt;tr&gt;
+                     &lt;td 
+                        style='padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;'&gt;
+                        &lt;custom name='opencounter' type='tracking' /&gt;
+                        &lt;!-- Header--&gt;
+                        &lt;div data-type='slot' 
+                           data-key='header_security'&gt;&lt;/div&gt;
+                        &lt;!-- Quitar --&gt;
+                        &lt;table cellpadding='0' cellspacing='0' border='0' 
+                           width='100%' style='border-spacing:0;'&gt;
+                           &lt;tr&gt;
+                              &lt;td style='padding-top:20px;padding-right: 
+                                 0;padding-bottom: 20px;padding-left: 0;'&gt;
+                              &lt;/td&gt;
+                           &lt;/tr&gt;
+                        &lt;/table&gt;
+                        &lt;!-- Contenido 1--&gt;
+                        &lt;table cellspacing='0' cellpadding='0' border='0' 
+                           width='100%' class='bradius-xs-0'
+                           style='box-shadow: 0 2px 12px 0 #D7D7D7;overflow: 
+                           hidden;border-radius: 4px;width: 100%;'&gt;
+                           &lt;tr&gt;
+                              &lt;td 
+                                 style='padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;'&gt;
+                                 &lt;div data-type='slot' 
+                                    data-key='contenido1'&gt;&lt;/div&gt;
+                                 &lt;!-- Header Logo --&gt;
+                                 &lt;table cellspacing='0' cellpadding='0' border='0'
+                                    width='100%' bgcolor='#FFFFFF'
+                                    style='border-spacing: 0;background-color: 
+                                    #FFFFFF;'&gt;
+                                    &lt;tr&gt;
+                                       &lt;td valign='top' 
+                                          style='padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;'&gt;
+                                          &lt;table cellspacing='0' cellpadding='0' 
+                                             border='0' width='100%'
+                                             style='width:100%;border-spacing: 0;'&gt;
+                                             &lt;tr&gt;
+                                                &lt;td valign='top' align='left'
+                                                   style='padding-top: 20px;padding-right: 
+                                                   0;padding-bottom: 20px;padding-left: 20px;text-align: left;'&gt;
+                                                   &lt;img class='h-xs-36'
+                                                      style='display: block;padding: 
+                                                      0px;text-align: left;height: 42px;width: auto;border: 0px;'
+                                                      alt='Logo Banco Pichincha'
+                                                      src='https://bancopichincha-prod.pichincha.com/tcp/public/images/Email/logo2.png'
+                                                      height='42'&gt;
+                                                &lt;/td&gt;
+                                             &lt;/tr&gt;
+                                             &lt;tr&gt;
+                                                &lt;td style='padding: 0px;'&gt;
+                                                   &lt;table cellpadding='0' 
+                                                      cellspacing='0' width='100%' class='condiciones-span-gris'
+                                                      style='margin-top: 0px;border-top: 
+                                                      solid 1px #DEE3ED; margin-left: 0px;padding-right: 
+                                                      0px;padding-top:0px;padding-bottom:0px;'&gt;
+                                                      &lt;tr&gt;
+                                                         &lt;td&gt;
+                                                         &lt;/td&gt;
+                                                      &lt;/tr&gt;
+                                                   &lt;/table&gt;
+                                                &lt;/td&gt;
+                                             &lt;/tr&gt;
+                                          &lt;/table&gt;
+                                       &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                 &lt;/table&gt;
+                                 &lt;table cellpadding='0' cellspacing='0' border='0'
+                                    width='100%' bgcolor='#000000'
+                                    style='width: 
+                                    100%;border-spacing:0;background-color: #FFFFFF;'&gt;
+                                    &lt;tr&gt;
+                                    &lt;/tr&gt;
+                                    &lt;tr&gt;
+                                       &lt;td class='px-xs-16 pb-xs-32'
+                                          style=' padding-top: 0px;padding-right: 
+                                          40px;padding-bottom:40px;padding-left:40px;text-align: center;'&gt;
+                                          &lt;span class='font-xs-C32'
+                                             style='font-family: Arial;font-size: 
+                                             30px;font-weight: normal;font-style: normal;font-stretch: 
+                                             normal;line-height: 40px;letter-spacing: normal;color: #0F265C;'&gt;
+                                          &lt;br&gt;" + in_EmailSubject + @"&lt;br/&gt;
+                                          &lt;/span&gt;
+                                       &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                    &lt;tr&gt;
+                                       &lt;td class='px-xs-16' style='padding-left: 
+                                          40px;padding-right: 40px;'&gt;
+                                          &lt;table cellpadding='0' cellspacing='0' 
+                                             width='100%'
+                                             style='background-color: transparent; 
+                                             min-width: 100%;'&gt;
+                                             &lt;!-- Datos de tabla --&gt;
+                                             &lt;tr&gt;
+                                                &lt;td&gt;
+                                                   &lt;table cellpadding='0' 
+                                                      cellspacing='0' width='100%'&gt;
+                                                      &lt;!-- Tarjeta Solicitada --&gt;
+                                                      &lt;tr&gt;
+                                                         &lt;td&gt;
+                                                            &lt;table cellpadding='0' 
+                                                               cellspacing='0' width='100%'
+                                                               style='border: 1px solid 
+                                                               #DEE3ED;border-radius: 8px;'&gt;
+                                                               &lt;tr&gt;
+                                                                  &lt;td&gt;
+                                                                     &lt;table cellpadding='0' 
+                                                                        cellspacing='0' width='100%'&gt;
+                                                                        &lt;tr&gt;
+                                                                           &lt;td width='100%'&gt;
+                                                                              &lt;table 
+                                                                                 cellpadding='0' cellspacing='0' width='100%'&gt;
+                                                                                 &lt;tr&gt;
+                                                                                    &lt;td 
+                                                                                       class='px-xs-16 pt-xs-16'
+                                                                                       style='padding-top: 24px;padding-left: 24px;padding-right: 24px;'&gt;
+                                                                                       &lt;span 
+                                                                                          class='font-xs-C14'
+                                                                                          style='color: 
+                                                                                          #2C2C30; font-family: Arial; font-size: 14px; line-height: 24px;'&gt;
+                                                                                       &lt;/span&gt;
+                                                                                    &lt;/td&gt;
+                                                                                 &lt;/tr&gt;
+                                                                                 &lt;tr&gt;
+                                                                                    &lt;td 
+                                                                                       class='px-xs-16 pb-xs-16'
+                                                                                       style='padding-left: 24px;padding-bottom: 24px;padding-right: 24px;'&gt;
+                                                                                    &lt;/td&gt;
+                                                                                 &lt;/tr&gt;
+                                                                              &lt;/table&gt;
+                                                                           &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                     &lt;/table&gt;
+                                                                  &lt;/td&gt;
+                                                               &lt;/tr&gt;
+                                                               &lt;!-- Linea --&gt;
+                                                               &lt;tr&gt;
+                                                                  &lt;td style='padding: 
+                                                                     0px;'&gt;
+                                                                     &lt;table cellpadding='0' 
+                                                                        cellspacing='0' width='100%'
+                                                                        class='condiciones-span-gris'
+                                                                        style='margin-top: 
+                                                                        0px;border-top: solid 1px #DEE3ED; margin-left: 0px;padding-right: 
+                                                                        0px;padding-top:0px;padding-bottom:0px;'&gt;
+                                                                        &lt;tr&gt;
+                                                                           &lt;td&gt;
+                                                                           &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                     &lt;/table&gt;
+                                                                  &lt;/td&gt;
+                                                               &lt;/tr&gt;
+                                                               &lt;!-- Linea --&gt;
+                                                               &lt;tr&gt;
+                                                                  &lt;td style='padding: 
+                                                                     0px;'&gt;
+                                                                  &lt;/td&gt;
+                                                               &lt;/tr&gt;
+                                                               &lt;!-- Linea --&gt;
+                                                               &lt;tr&gt;
+                                                                  &lt;td style='padding: 
+                                                                     0px;'&gt;
+                                                                     &lt;table cellpadding='0' 
+                                                                        cellspacing='0' width='100%'
+                                                                        class='condiciones-span-gris'
+                                                                        style='margin-top: 
+                                                                        0px;border-top: solid 1px #DEE3ED; margin-left: 0px;padding-right: 
+                                                                        40px;padding-top:0px;padding-bottom:0px;'&gt;
+                                                                        &lt;tr&gt;
+                                                                           &lt;td&gt;
+                                                                           &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                     &lt;/table&gt;
+                                                                  &lt;/td&gt;
+                                                               &lt;/tr&gt;
+                                                               &lt;!-- Costo envio --&gt;
+                                                               &lt;tr&gt;
+                                                                  &lt;td&gt;
+                                                                     &lt;table cellpadding='0' 
+                                                                        cellspacing='0' width='100%'
+                                                                        style='background-color: 
+                                                                        #F9FAFC;border-bottom-left-radius: 8px;border-bottom-right-radius: 
+                                                                        8px;'&gt;
+                                                                        &lt;tr&gt;
+                                                                           &lt;td width='100%'&gt;
+                                                                              &lt;table 
+                                                                                 cellpadding='0' cellspacing='0' width='100%'&gt;
+                                                                                 &lt;tr&gt;
+                                                                                    &lt;td 
+                                                                                       class='pl-xs-16'
+                                                                                       style='padding-top: 16px;padding-bottom: 26px;padding-left: 24px;'&gt;
+                                                                                       &lt;span 
+                                                                                          class='font-xs-C14'
+                                                                                          style='color: 
+                                                                                          #2C2C30; font-weight: 400; font-family: Arial; font-size: 16px; 
+                                                                                          line-height: 24px;'&gt;"
+                                                                                       + in_EmailBodyMessage +
+                                                                                       @"&lt;/span&gt;
+                                                                                    &lt;/td&gt;
+                                                                                 &lt;/tr&gt;
+                                                                              &lt;/table&gt;
+                                                                           &lt;/td&gt;
+                                                                        &lt;/tr&gt;
+                                                                     &lt;/table&gt;
+                                                                  &lt;/td&gt;
+                                                               &lt;/tr&gt;
+                                                            &lt;/table&gt;
+                                                         &lt;/td&gt;
+                                                      &lt;/tr&gt;
+                                                      &lt;!-- Linea --&gt;
+                                                      &lt;tr&gt;
+                                                         &lt;td class='pt-xs-56' 
+                                                            style='padding-top: 63px;'&gt;
+                                                            &lt;table cellpadding='0' 
+                                                               cellspacing='0' width='100%' class='condiciones-span-gris'
+                                                               style='margin-top: 
+                                                               0px;border-top: solid 1px #DEE3ED; margin-left: 0px;padding-right: 
+                                                               40px;padding-top:0px;padding-bottom:0px;'&gt;
+                                                               &lt;tr&gt;
+                                                                  &lt;td&gt;
+                                                                  &lt;/td&gt;
+                                                               &lt;/tr&gt;
+                                                            &lt;/table&gt;
+                                                         &lt;/td&gt;
+                                                      &lt;/tr&gt;
+                                                      &lt;tr&gt;
+                                                         &lt;td style='padding-top: 40px; 
+                                                            padding-bottom: 0px;'&gt;
+                                                         &lt;/td&gt;
+                                                      &lt;/tr&gt;
+                                                      &lt;tr&gt;
+                                                         &lt;td
+                                                            style='padding-top:15px;padding-right:0px;padding-bottom:36px;padding-left:0px;'&gt;
+                                                            &lt;table cellpadding='0' 
+                                                               cellspacing='0' border='0' width='100%'
+                                                               style='border-spacing:0;'&gt;
+                                                               &lt;tr&gt;
+                                                                  &lt;td
+                                                                     style='padding-top: 
+                                                                     0px;padding-right:0;padding-bottom: 0px;padding-left:0;'&gt;
+                                                                  &lt;/td&gt;
+                                                               &lt;/tr&gt;
+                                                            &lt;/table&gt;
+                                                         &lt;/td&gt;
+                                                      &lt;/tr&gt;
+                                                   &lt;/table&gt;
+                                                &lt;/td&gt;
+                                             &lt;/tr&gt;
+                                          &lt;/table&gt;
+                                       &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                 &lt;/table&gt;
+                                 &lt;!--Separador --&gt;
+                                 &lt;table id='segmentoSeparador0' 
+                                    class='tb_properties border_style'
+                                    style='background-color:#0f265c;box-shadow: 0 2px 
+                                    12px 0 rgba(0, 0, 0, 0.1); margin-top: 24px; margin-bottom: 0px; 
+                                    border-radius: 4px;min-width: 100%; border-radius: 4px;'
+                                    cellspacing='0' cellpadding='0' bgcolor='#ffffff' 
+                                    width='100%'&gt;
+                                 &lt;/table&gt;
+                                 &lt;!--Contenido 2 --&gt;
+                                 &lt;table cellspacing='0' cellpadding='0' border='0'
+                                    width='100%' bgcolor='#ffffff'
+                                    style='background-color:#FFFFFF;width: 
+                                    100%;border-spacing: 0;box-shadow: 0 2px 12px 0 #D7D7D7;border-radius: 
+                                    4px;'&gt;
+                                    &lt;tr&gt;
+                                       &lt;td 
+                                          style='padding-top:20px;padding-right:0;padding-bottom:0;padding-left:0;'&gt;
+                                          &lt;div data-type='slot' 
+                                             data-key='contenido2'&gt;&lt;/div&gt;
+                                          &lt;table cellpadding='0' cellspacing='0' 
+                                             border='0' width='100%' style='border-spacing:0;'&gt;
+                                             &lt;tr&gt;
+                                                &lt;td class='px-xs-20 pt-xs-20'
+                                                   style='padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;text-align:
+                                                   center;'&gt;
+                                                &lt;/td&gt;
+                                             &lt;/tr&gt;
+                                          &lt;/table&gt;
+                                          &lt;table cellpadding='0' cellspacing='0' 
+                                             border='0' width='100%' style='border-spacing:0;'&gt;
+                                             &lt;tr&gt;
+                                                &lt;td 
+                                                   style='padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;'&gt;
+                                                   &lt;img alt='Spacer' width='40' 
+                                                      height='32'
+                                                      src='https://bancopichincha-prod.pichincha.com/tcp/public/images/Email/pixel.gif'&gt;
+                                                &lt;/td&gt;
+                                             &lt;/tr&gt;
+                                          &lt;/table&gt;
+                                       &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                 &lt;/table&gt;
+                                 &lt;!-- Footer--&gt;
+                                 &lt;div data-type='slot' 
+                                    data-key='footer'&gt;&lt;/div&gt;
+                                 &lt;table cellpadding='0' cellspacing='0' border='0'
+                                    width='100%' bgcolor='#f3f4f7'
+                                    style='background-color: 
+                                    #f3f4f7;border-spacing:0;'&gt;
+                                    &lt;tr&gt;
+                                       &lt;td 
+                                          style='padding-top:0px;padding-right:0;padding-bottom:0;padding-left:0'&gt;
+                                          &lt;!--[if gte mso 9]&gt;
+                                          &lt;v:rect 
+                                             xmlns:v='urn:schemas-microsoft-com:vml' fill='true' stroke='false' 
+                                             style='width: 750px; height: 240px;'&gt;
+                                             &lt;v:fill type='tile' 
+                                                src='https://bancopichincha-prod.pichincha.com/tcp/public/images/Email/background-DESKTOP.png'
+                                                color='#f3f4f7' /&gt;
+                                             &lt;v:textbox inset='0,0,0,0'&gt;
+                                                &lt;![endif]--&gt;
+                                                &lt;!--[if gte mso 9]&gt;
+                                             &lt;/v:textbox&gt;
+                                          &lt;/v:rect&gt;
+                                          &lt;![endif]--&gt;
+                                       &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                 &lt;/table&gt;
+                              &lt;/td&gt;
+                           &lt;/tr&gt;
+                        &lt;/table&gt;
+                     &lt;/td&gt;
+                  &lt;/tr&gt;
+               &lt;/table&gt;
+            &lt;/td&gt;
+         &lt;/tr&gt;
+      &lt;/table&gt;
+   &lt;/body&gt;
+&lt;/html&gt;"</CSharpValue>
+                </InArgument>
+              </umab:SendMailX.Body>
+              <umab:SendMailX.Cc>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">in_EmailAddressReceiverCC</CSharpValue>
+                </InArgument>
+              </umab:SendMailX.Cc>
+              <umab:SendMailX.Files>
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+              </umab:SendMailX.Files>
+              <umab:SendMailX.HtmlBodyFromFile>
+                <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="{x:Null}">
+                  <umabh:HtmlContentArgument.RuntimeImages>
+                    <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                  </umabh:HtmlContentArgument.RuntimeImages>
+                  <umabh:HtmlContentArgument.ValueMappings>
+                    <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+                  </umabh:HtmlContentArgument.ValueMappings>
+                </umabh:HtmlContentArgument>
+              </umab:SendMailX.HtmlBodyFromFile>
+              <umab:SendMailX.Subject>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">in_EmailSubject</CSharpValue>
+                </InArgument>
+              </umab:SendMailX.Subject>
+              <umab:SendMailX.To>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">in_EmailAddressReceiverTo</CSharpValue>
+                </InArgument>
+              </umab:SendMailX.To>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </umab:SendMailX>
+          </Sequence>
+        </ActivityAction>
+      </umab:GmailApplicationCard.Body>
+      <umab:GmailApplicationCard.EmailAddress>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </umab:GmailApplicationCard.EmailAddress>
+    </umab:GmailApplicationCard>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="554.6666666666666,519.3333333333334" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="518,407.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <umab:ExchangeApplicationCard ApplicationId="{x:Null}" SharedMailbox="{x:Null}" TenantId="{x:Null}" Account="Please select an account" ConnectionAccountName="Microsoft Outlook 365 #3" ConnectionId="c7d1626e-12a6-486b-acfd-bebe142bce15" DisplayName="Use Outlook 365 - Correo genérico" sap:VirtualizedContainerService.HintSize="484,347.3333333333333" sap2010:WorkflowViewState.IdRef="ExchangeApplicationCard_1" UseConnectionService="True">
+            <umab:ExchangeApplicationCard.Body>
+              <ActivityAction x:TypeArguments="um:IMailQuickHandle">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="um:IMailQuickHandle" Name="Exchange" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </ActivityAction>
+            </umab:ExchangeApplicationCard.Body>
+            <umab:ExchangeApplicationCard.EmailAddress>
+              <InArgument x:TypeArguments="x:String">
+                <Literal x:TypeArguments="x:String" Value="" />
+              </InArgument>
+            </umab:ExchangeApplicationCard.EmailAddress>
+          </umab:ExchangeApplicationCard>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:LogMessage DisplayName="Log Message - Email enviado" sap:VirtualizedContainerService.HintSize="554.6666666666666,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2">
+      <ui:LogMessage.Level>
+        <InArgument x:TypeArguments="ui:LogLevel">
+          <CSharpValue x:TypeArguments="ui:LogLevel" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">UiPath.Core.Activities.LogLevel.Info</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Level>
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">"Email enviado con éxito"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>
