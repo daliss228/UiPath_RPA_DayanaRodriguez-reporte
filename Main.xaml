@@ -101,7 +101,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[UiPath_RPA_DayanaRodriguez-reporte]&#xA;[Reporte citas AMT]&#xA;[Dayana Rodriguez]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1562.6666666666667,768.04" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[UiPath_RPA_DayanaRodriguez-reporte]&#xA;[Reporte citas AMT]&#xA;[Dayana Rodriguez]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1562.6666666666665,949.3733333333332" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -377,6 +377,9 @@
                                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                                     <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_150">Config</CSharpValue>
                                   </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReporteFilePath">
+                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_158">strReporteFilePath</CSharpValue>
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
@@ -478,11 +481,11 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="154,122.66666666666667" sap2010:WorkflowViewState.IdRef="State_2" IsFinal="True">
+                            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="597.3333333333334,2237.3333333333335" sap2010:WorkflowViewState.IdRef="State_2" IsFinal="True">
                               <State.Entry>
-                                <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="550.6666666666666,2059.3333333333335" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                                <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="550.6666666666666,2090" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                                   <TryCatch.Try>
-                                    <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="548.6666666666666,1244.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                    <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="548.6666666666666,1275.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_16">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -511,7 +514,7 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </ui:InvokeWorkflowFile>
-                                      <If DisplayName="If - Verificar si hay error" sap:VirtualizedContainerService.HintSize="514.6666666666666,662.6666666666666" sap2010:WorkflowViewState.IdRef="If_8">
+                                      <If DisplayName="If - Verificar si hay error" sap:VirtualizedContainerService.HintSize="514.6666666666666,693.3333333333334" sap2010:WorkflowViewState.IdRef="If_8">
                                         <If.Condition>
                                           <InArgument x:TypeArguments="x:Boolean">
                                             <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_99">SystemException != null || BusinessException != null</CSharpValue>
@@ -567,13 +570,13 @@
                                           </Sequence>
                                         </If.Then>
                                         <If.Else>
-                                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512.6666666666666,261.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512.6666666666666,292" sap2010:WorkflowViewState.IdRef="Sequence_18">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <ui:MultipleAssign DisplayName="MultipleAssign - Información correo éxito" sap:VirtualizedContainerService.HintSize="478.6666666666667,201.33333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                                            <ui:MultipleAssign DisplayName="MultipleAssign - Información correo éxito" sap:VirtualizedContainerService.HintSize="478.6666666666667,232" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                                               <ui:MultipleAssign.AssignOperations>
                                                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -605,8 +608,18 @@
                                                       </OutArgument>
                                                     </ui:AssignOperation.To>
                                                     <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">&lt;p&gt;Se ha creado el reporte de citaciones con éxito.&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;p&gt;Saludos,&lt;br&gt;RPA CITACIONES DE TRÁNSITO&lt;/p&gt;</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">
+                                                        <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_46">strEmailAttachments</CSharpReference>
+                                                      </OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
                                                       <InArgument x:TypeArguments="x:String">
-                                                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_151">"Se han cargado " + numRegistros + " transacciones en la cola."</CSharpValue>
+                                                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_160">strReporteFilePath</CSharpValue>
                                                       </InArgument>
                                                     </ui:AssignOperation.Value>
                                                   </ui:AssignOperation>
@@ -625,7 +638,9 @@
                                           <InArgument x:TypeArguments="x:String" x:Key="in_EmailSubject">
                                             <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_114">strEmailSubject</CSharpValue>
                                           </InArgument>
-                                          <InArgument x:TypeArguments="x:String" x:Key="in_EmailAttachments" />
+                                          <InArgument x:TypeArguments="x:String" x:Key="in_EmailAttachments">
+                                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_159">strEmailAttachments</CSharpValue>
+                                          </InArgument>
                                           <InArgument x:TypeArguments="x:String" x:Key="in_EmailBodyMessage">
                                             <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_113">strEmailBodyMessage</CSharpValue>
                                           </InArgument>
@@ -722,6 +737,7 @@
                                 <Variable x:TypeArguments="x:String" Name="strEmailAddressReceiverTo" />
                                 <Variable x:TypeArguments="x:String" Name="strEmailSubject" />
                                 <Variable x:TypeArguments="x:String" Name="strEmailBodyMessage" />
+                                <Variable x:TypeArguments="x:String" Name="strEmailAttachments" />
                               </State.Variables>
                             </State>
                           </Transition.To>
@@ -789,6 +805,7 @@
       <Variable x:TypeArguments="ui:BusinessRuleException" sap2010:Annotation.AnnotationText="Used during transitions between states and represents a situation that does not conform to the rules of the process being automated." Name="BusinessException" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="Config" />
       <Variable x:TypeArguments="x:Int32" Name="numRegistros" />
+      <Variable x:TypeArguments="x:String" Name="strReporteFilePath" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>
