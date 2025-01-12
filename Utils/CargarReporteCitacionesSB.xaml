@@ -88,9 +88,10 @@
       <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CargarReporteCitacionesSB" sap:VirtualizedContainerService.HintSize="1545.3333333333333,1528.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CargarReporteCitacionesSB" sap:VirtualizedContainerService.HintSize="1545.3333333333333,1625.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strStorageBucketFile" />
       <Variable x:TypeArguments="x:String" Name="strStorageBucketFolder" />
@@ -137,7 +138,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:RetryScope DisplayName="Retry Scope - Cargar archivo reporte" sap:VirtualizedContainerService.HintSize="494,1149.3333333333333" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3">
+    <ui:RetryScope DisplayName="Retry Scope - Cargar archivo reporte" sap:VirtualizedContainerService.HintSize="494,1078.6666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="452,868" sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -219,5 +220,12 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:RetryScope>
+    <ui:LogMessage DisplayName="Log Message - Reporte cargado" sap:VirtualizedContainerService.HintSize="494,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">"--&gt; Archivo " + Path.GetFileName(in_ReporteFilePath) + " cargado en SB."</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
   </Sequence>
 </Activity>
